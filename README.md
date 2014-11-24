@@ -2,6 +2,7 @@ History
 =======
 
 Our goal is to collect information about Open Source Communities and Hackspaces all over Asia. This information will be used to aggregate contact data, locations, news feeds and events.
+We adopted this API from the Hackerspaces and Freifunk API, invented years before to collect decentralized data.
 
 At the Wireless Community Weekend 2013 in Berlin there was a first meeting to relaunch freifunk.net. To represent local communities without collecting and storing data centrally, a way had to be found. Another requirement was to enable local communities to keep their data up to date easily.
 
