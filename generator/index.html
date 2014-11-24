@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Create you own FOSSASIA API file</title>
+<link rel="stylesheet" style="text/css" href="jsonform/deps/opt/bootstrap.css" />
+<link rel="stylesheet" style="text/css" href="deps/jquery-ui.css" />
+<link rel="stylesheet" style="text/css" href="ffapi.css" />
+</head>
+<body>
+
+<script>
+	// Wird aufgerufen bei einer neuen Nachricht
+	function listener(e){
+
+		var eventName = e.data[0],
+			data      = e.data[1];
+
+		switch (eventName) {
+			case 'referrer': setNewBase(data); break;
+			case 'styles':   injectStyles(data); break;
+		}
+
+	}
+
+	// Listener für alle Browser
+	if (window.addEventListener){
+		window.addEventListener("message", listener, false);
+	} else {
+		window.attachEvent("onmessage", listener);
+	}
+
+	// Aktualisiere Base-URL
+	function setNewBase(url) {
+		document.getElementsByTagName('base')[0].href = url;
+	}
+
+	// Styles empfangen und auf <body> anwenden
+	function injectStyles(styles) {
+		$(document.body).css(styles);
+	}
+</script>
+	<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span8">
+			<h2>Generator form</h2>
+			<form id="schemaform" class=""></form>
+		</div>
+		<div class="span4">
+			<h2>Results and Validation</h2>
+			<div id="directory">
+				<select id="dirselect"></select>
+			</div>
+			<form id="downloadform" name="download" action="download.php" method="POST" target="_blank">
+			<div id="result">
+				<textarea name="result" id="jsonText" row="288" cols="50" style="margin: 0px 0px 10px; width: 100%; height: 500px;" placeholder="Select your community file from the list or paste your existing JSON here ... if you have one. ;-)"></textarea>
+				<input id="communityName" name="communityName" type="hidden">
+				<div class="alert autohide message"></div>
+			</div>
+			<div id="error" class="alert autohide">
+				<div class="message"></div>
+				<div class="details"></div>
+			</div>
+			<div id="buttons">
+				<input id="jsonTakeButton" type="button" value="JSON to form" class="btn" title="Load contents of your file to the form on the left side">
+				<input id="validateButton" type="button" value="Validate Contents" class="btn" title="Validate your file or contents of the field above">
+				<input id="downloadButton" type="submit" value="Download JSON" class="btn" title="Download the JSON contents" disabled="disabled">
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="jsonform/deps/jquery.min.js"></script>
+<script type="text/javascript" src="jsonform/deps/underscore.js"></script>
+<script type="text/javascript" src="jsonform/deps/opt/jsv.js"></script>
+<script type="text/javascript" src="jsonform/deps/opt/bootstrap-dropdown.js"></script>
+<script type="text/javascript" src="jsonform/lib/jsonform.js"></script>
+<script type="text/javascript" src="deps/jquery-ui.js"></script>
+<script type="text/javascript" src="ffapi.formTemplate.js"></script>
+<script type="text/javascript" src="ffapi.isoCountryCodes.js"></script>
+<script type="text/javascript" src="ffapi.js"></script>
+</body>
+</html>

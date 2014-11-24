@@ -1,0 +1,23 @@
+.expandable > legend:before {
+	content: '\25B8';
+	padding-right: 5px;
+}
+.expanded > legend:before {
+	content: '\25BE';
+}
+.jsonform-required > label:after {
+	content: ' *';
+	color: red;
+}
+
+.jsonform-hasrequired:after {
+	content: '* Required field';
+	display: block;
+	color: red;
+	padding-top: 1em;
+}
+
+.ui-datepicker-trigger {
+	padding-left: 5px;
+	height: 20px;
+}
