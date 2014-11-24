@@ -1,0 +1,634 @@
+{
+	"schema": {
+		"type": "object",
+		"description": "FOSSASIA Community API 0.4.4",
+		"required": false,
+		"properties": {
+			"api": {
+				"title": "API",
+				"type": "string",
+				"description": "The FOSSASIA Community API version you use",
+				"enum": ["1.0.0"],
+				"default": "1.0.0",
+				"required": true
+			},
+			"name": {
+				"title": "Name",
+				"type": "string",
+				"description": "The name of your community",
+				"required": true
+			},
+			"metacommunity": {
+				"title": "Metacommunity",
+				"type": "string",
+				"description": "The name of your meta community. if you local community belongs to a bigger community",
+				"required": false
+			},
+			"location": {
+				"title": "Location",
+				"type": "object",
+				"description": "Position data such as a postal address or geographic coordinates",
+				"required": true,
+				"properties": {
+					"city": {
+						"title": "City",
+						"type": "string",
+						"description": "name of your city or region",
+						"required": true
+					},
+					"country": {
+						"title": "Country",
+						"type": "string",
+						"description": "Your country, list taken from http://countrylist.net/de/",
+						"enum": ["", "AF","AX","AL","DZ","AS","AD","AO","AI","AQ","AG","AR","AM","AW","AC","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BZ","BJ","BM","BT","BO","BA","BW","BV","BR","IO","BN","BG","BF","BI","KH","CM","CA","IC","CV","KY","CF","TD","CL","CN","CX","CC","CO","KM","CG","CD","CK","CR","CI","HR","CU","CY","CZ","DK","DG","DJ","DM","DO","EC","EG","SV","GQ","ER","EE","ET","EU","FK","FO","FJ","FI","FR","GF","PF","TF","GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GG","GN","GW","GY","HT","HM","VA","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM","JP","JE","JO","KZ","KE","KI","KP","KR","KW","KG","LA","LV","LB","LS","LR","LY","LI","LT","LU","MO","MK","MG","MW","MY","MV","ML","MT","MH","MQ","MR","MU","YT","MX","FM","MD","MC","MN","ME","MS","MA","MZ","MM","NA","NR","NP","NL","AN","NC","NZ","NI","NE","NG","NU","NF","MP","NO","OM","PK","PW","PS","PA","PG","PY","PE","PH","PN","PL","PT","PR","QA","RE","RO","RU","RW","SH","KN","LC","PM","VC","WS","SM","ST","SA","NT","SN","CS","SC","SL","SG","SK","SI","SB","SO","ZA","GS","SU","ES","LK","SD","SR","SJ","SZ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG","TK","TO","TT","TA","TN","TR","TM","TC","TV","UG","UA","AE","GB","US","UY","UZ","VU","VE","VN","VG","VI","WF","EH","YE","ZM","ZW"],
+						"default": "",
+						"required": false
+					},
+					"address": {
+						"type": "object",
+						"description": "The address of the place you meet",
+						"required": false,
+						"properties": {
+							"Name": {
+								"title": "Name of your place",
+								"type": "string",
+								"description": "the name of place you meet",
+								"required": false
+							},
+							"Street": {
+								"title": "Street",
+								"type": "string",
+								"description": "the street your meeting place",
+								"required": false
+							},
+							"Zipcode": {
+								"title": "ZIP",
+								"type": "string",
+								"description": "the zip code of your meeting place",
+								"required": false
+							}
+						}
+					},
+					"lat": {
+						"title": "Latitude",
+						"type": "number",
+						"description": "Latitude of your city in decimal degrees (e.g. 51.12345)",
+						"required": true
+					},
+					"lon": {
+						"title": "Longitude",
+						"type": "number",
+						"description": "Longitude of your city in decimal degrees (e.g. 11.6789)",
+						"required": true
+					}
+				}
+			},
+			"contact": {
+				"type": "object",
+				"required": true,
+				"properties": {
+					"email": {
+						"title": "Email",
+						"type": "string",
+						"pattern": "^[A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}$",
+						"description": "Email address to which other people can contact your community (user@domain.com)",
+						"required": false
+					},
+					"facebook": {
+						"title": "facebook",
+						"type": "string",
+						"pattern": "^(http|https)://([a-z\\-]*\\.|)facebook\\.com/[A-Za-z0-9ÄÖÜäöüß\\-_\\.]+",
+						"description": "URL to your community's facebook account (https://facebook.com/...)",
+						"required": false
+					},
+					"identica": {
+						"title": "Identica",
+						"type": "string",
+						"pattern": "^(http|https)://([a-z\\-]*\\.|)identi\\.ca/[A-Za-z0-9ÄÖÜäöüß\\-_\\.]+",
+						"description": "URL to your community's identica account (https://identi.ca/...)",
+						"required": false
+					},
+					"irc": {
+						"title": "IRC",
+						"type": "string",
+						"pattern": "^irc://.*",
+						"description": "your community's irc channel, starts with irc://",
+						"required": false
+					},
+					"jabber": {
+						"title": "Jabber",
+						"type": "string",
+						"pattern": "^[A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}$",
+						"description": "a jabber account someone reads (account@jabberserver.tld)",
+						"required": false
+					},
+					"ml": {
+						"title": "Mailinglist",
+						"type": "string",
+						"description": "The email address (user@domain.com) of your mailing list or a link to the mailinglist info page (http{s}://...)",
+						"pattern": "^([A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}|(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+)$",
+						"required": false
+					},
+					"phone": {
+						"title": "Phone",
+						"type": "string",
+						"description": "if your community has a phone number (e.g. +49 1234 567890 based on E.123 notation)",
+						"required": false
+					},
+					"googleplus": {
+						"title": "Google+",
+						"type": "string",
+						"description": "URL to your community's g+ account (https://plus.google.com/...)",
+						"pattern": "^(http|https)://plus\\.google\\.com/[A-Za-z0-9ÄÖÜäöüß\\+\\-\\./_]+",
+						"required": false
+					},
+					"twitter": {
+						"title": "Twitter",
+						"type": "string",
+						"pattern": "^@[A-Za-z0-9]{1,15}",
+						"description": "Your community's twitter name (starts with @)",
+						"required": false
+					},
+					"webform": {
+						"title": "Webform",
+						"type": "string",
+						"description": "URL to your community's contact form (http{s}://...)",
+						"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+						"required": false
+					}
+				}
+			},
+			"url": {
+				"title": "Homepage",
+				"type": "string",
+				"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+				"description": "The main website (http{s}://...)",
+				"required": true
+			},
+			"timeline": {
+				"type": "array",
+				"description": "These are lifetime events something like date of birth (and rebirth :-) of your community or other important milestones ",
+				"required": false,
+				"items": {
+					"type": "object",
+					"required": false,
+					"properties": {
+						"description": {
+							"title": "Description",
+							"type": "string",
+							"description": "description of your lifetime event",
+							"required": false
+						},
+						"timestamp": {
+							"title": "Timestamp",
+							"type": "string",
+							"pattern": "^([0-9]{4})(?:-?W([0-9]+)(?:-?([0-9]+)D?)?|(?:-([0-9]+))?-([0-9]+))(?:[T ]([0-9]+):([0-9]+)(?::([0-9]+)(?:\\.([0-9]+))?)?)?(?:Z(-?[0-9]*))?",
+							"description": "ISO 8601 timestamp when the event happened (format yyyy-mm-dd)",
+							"required": false
+						},
+						"url": {
+							"title": "URL",
+							"type": "string",
+							"description": "url to details of this timeline-element",
+							"required": false
+						}
+					}
+				}
+			},
+			"feeds": {
+				"type": "array",
+				"description": "Feeds you provide your community",
+				"required": false,
+				"items": {
+					"type": "object",
+					"required": false,
+					"properties": {
+						"name": {
+							"title": "Feed name",
+							"type": "string",
+							"description": "name of the feed",
+							"required": false
+						},
+						"category": {
+							"title": "Feed category",
+							"type": "string",
+							"enum": ["blog", "forum", "ics", "podcast", "wiki", "others", ""],
+							"default": "",
+							"description": "category of the feed like blog entries, calendars, forum messages, wiki articles, ...",
+							"required": false
+						},
+						"type": {
+							"title": "Feed type",
+							"type": "string",
+							"description": "type of the feed like rss, atom, xml",
+							"required": false
+						},
+						"url": {
+							"title": "URL",
+							"type": "string",
+							"description": "url of the feed",
+							"required": false
+						}
+					}
+				}
+			},
+			"state": {
+				"type": "object",
+				"description": "A collection of status-related data. Actual open/closed status, icons, last change timestamp etc.",
+				"required": true,
+				"properties": {
+					"nodes": {
+						"title": "Active Nodes",
+						"type": "integer",
+						"description": "number of active nodes. This field is predestined to be updated regularly, please see sample solutions for <a href=\"https://github.com/Freifunk-Mainz/changeffapi\" target=\"_blank\"> Gluon</a> or <a href=\"https://github.com/freifunk/common.api.freifunk.net/blob/master/contrib/ffapi-update-nodes.py\" target=\"_blank\">OLSR</a>",
+						"required": false
+					},
+					"lastchange": {
+						"title": "Last Change",
+						"type": "state",
+						"description": "At what iso timestamp has your community status lastly changed? (ISO 8601 timestamp)",
+						"default": 0,
+						"required": true
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"description": "A free-form string something like 'open for public', 'members only' or whatever you want it to be)",
+						"required": false
+					},
+					"description": {
+						"title": "Description",
+						"type": "string",
+						"description": "Describe your community in a few lines",
+						"required": false
+					},
+					"focus": {
+						"title": "Focus",
+						"type": "array",
+						"description": "What's the focus of your local community?",
+						"required": false,
+						"items": {
+							"type": "string",
+							"title": "option",
+							"enum": [
+								"infrastructure/backbone",
+								"Public Free Wifi",
+								"Social Community Building",
+								"Local services and content",
+								"Free internet access"
+							]
+						}
+					}
+				}
+			},
+			"nodeMaps": {
+				"type": "array",
+				"description": "maps of nodes or topology your community provides",
+				"required": false,
+				"items": {
+					"type": "object",
+					"required": false,
+					"properties": {
+						"url": {
+							"title": "Url of the map",
+							"type": "string",
+							"description": "the url where the map is located",
+							"required": false
+						},
+						"interval": {
+							"title": "interval",
+							"type": "string",
+							"description": "how often the map will be refreshed",
+							"required": false
+						},
+						"technicalType": {
+							"title": "map technical type",
+							"type": "string",
+							"description": "the kind of map is used",
+							"enum": ["", "ffmap", "ffsomething", "olsr-dot", "openwifimap", "netmon", "libremap", "nodewatcher", "kml"],
+							"default": "",
+							"required": false
+						},
+						"mapType": {
+							"title": "map type human readable",
+							"type": "string",
+							"description": "the kind of data the map provides",
+							"enum": ["", "geographical", "structural", "list/status"],
+							"default": "",
+							"required": false
+						}
+					}
+				}
+			},
+			"services": {
+				"type": "array",
+				"description": "services provided by your community",
+				"required": false,
+				"items": {
+					"type": "object",
+					"required": false,
+					"properties": {
+						"serviceName": {
+							"title": "Service Name",
+							"type": "string",
+							"description": "name of your service (e.g. jabber...)",
+							"required": false
+						},
+						"serviceDescription": {
+							"title": "Service Description",
+							"type": "string",
+							"description": "describe your service",
+							"required": false
+						},
+						"externalUri": {
+							"title": "External URI",
+							"type": "string",
+							"description": "URI to use your service from the internet",
+							"required": false
+						},
+						"internalUri": {
+							"title": "Internal URI",
+							"type": "string",
+							"description": "URI to use your service from freifunk or icvpn-networks",
+							"required": false
+						}
+					}
+				}
+			},
+			"support": {
+				"type": "object",
+				"description": "support for your community, e.g. by a local club, and donations via campaigns e.g. by betterplace.de",
+				"required": false,
+				"properties": {
+					"club": {
+						"title": "Supporting Club",
+						"type": "object",
+						"required": false,
+						"properties": {
+							"name" : {
+								"title": "Club Name",
+								"type": "string",
+								"description": "Name of the Club",
+								"required": false
+							},
+							"street" : {
+								"title": "Street",
+								"type": "string",
+								"description": "Address - Street",
+								"required": false
+							},
+							"zip" : {
+								"title": "zip",
+								"type": "string",
+								"description": "Address - ZIP",
+								"required": false
+							},
+							"city" : {
+								"title": "City",
+								"type": "string",
+								"description": "Address - City",
+								"required": false
+							},
+							"url": {
+								"title": "Homepage",
+								"type": "string",
+								"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+								"description": "The club's website (http{s}://...)",
+								"required": false
+							},
+							"email": {
+								"title": "Email",
+								"type": "string",
+								"pattern": "^[A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}$",
+								"description": "Email address to contact the club (user@domain.com)",
+								"required": false
+							},
+							"board" : {
+								"title": "Board Members",
+								"type": "array",
+								"description": "Who are board members of the club?",
+								"required": false,
+								"items": {
+									"type": "string",
+									"title": "name",
+									"required": false
+								}
+							}
+						}
+					},
+					"donations": {
+						"type": "object",
+						"title": "Donations",
+						"required": false,
+						"properties": {
+							"bankaccount": {
+								"type": "object",
+								"title": "Bank Account",
+								"required": false,
+								"properties": {
+									"IBAN": {
+										"type": "string",
+										"title": "IBAN",
+										"required": false
+									},
+									"BIC": {
+										"type": "string",
+										"title": "BIC",
+										"required": false
+									}
+								}
+							},
+							"campaigns": {
+								"title": "Campagins",
+								"type": "array",
+								"required": false,
+								"items": {
+									"type": "object",
+									"required": false,
+									"properties": {
+										"provider": {
+											"title": "Campaign Provider",
+											"type": "string",
+											"description": "Where do you host your donations?",
+											"enum": ["", "betterplace"],
+											"default": "",
+											"required": false
+										},
+										"projectid": {
+											"title": "Project ID",
+											"type": "string",
+											"description" :"ID of your project, betterplace ids are multiple digits and can be found within the url",
+											"required": false
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"techDetails": {
+				"type": "object",
+				"id": "http://wiki.freifunk.net/Freifunk_Firmware/%C3%9Cbersicht_Communities",
+				"description": "technical details of your community's freifunk implementation",
+				"required": false,
+				"properties": {
+					"firmware": {
+						"type": "object",
+						"required": false,
+						"properties": {
+							"url": {
+								"title": "Firmware download",
+								"type": "string",
+								"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+								"description": "link to your firmware images",
+								"required": false
+							},
+							"docs": {
+								"title": "Firmware Documents",
+								"type": "string",
+								"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+								"description": "link to your firmware docs",
+								"required": false
+							},
+							"name": {
+								"title": "Firmware Name",
+								"type": "string",
+								"description": "name of your firmware",
+								"required": false
+							}
+						}
+					},
+					"dns": {
+						"title": "DNS Servers",
+						"descripition": "dns servers for domains used by your community",
+						"type": "array",
+						"items": {
+							"type": "object",
+							"required": false,
+							"properties": {
+								"domainname": {
+									"type": "string",
+									"description": "the domain name (e.g. ffhh, ffol)",
+									"pattern": "^[A-Za-z0-9äöüÄÖÜß\\.\\-\\_]{2,}$",
+									"required": false,
+									"title": "Domain Name"
+								},
+								"nameserver": {
+									"type": "array",
+									"title": "Nameserver",
+									"description": "Nameservers servings zones of your domain",
+									"required": false,
+									"items": {
+										"type": "string",
+										"pattern": "^[A-Za-z0-9äöüÄÖÜß_\\-\\.:]*$",
+										"required": false
+									}
+								}
+							}
+						}
+					},
+					"networks": {
+						"type": "object",
+						"description": "networks used by your community",
+						"required": false,
+						"properties": {
+							"ipv6": {
+								"type": "array",
+								"title": "IPv6 networks",
+								"description": "ipv6 networks used by your community",
+								"required": false,
+								"items": {
+									"type": "object",
+									"title": "ipv6 network object",
+									"required": false,
+									"properties": {
+										"network": {
+											"type": "string",
+											"description": "ipv6 network network (e.g.2620:0:2d0:200::7/32) in CIDR notation",
+											"pattern": "^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*(\\/(\\d|\\d\\d|1[0-1]\\d|12[0-8]))$",
+											"required": false
+										}
+									}
+								}
+							},
+							"ipv4": {
+								"type": "array",
+								"description": "ipv4 networks used by your community",
+								"required": false,
+								"items": {
+									"type": "object",
+									"title": "ipv4 network object",
+									"required": false,
+									"properties": {
+										"network": {
+											"type": "string",
+											"description": "ipv4 network name (e.g. 10.w.x.y/z) in CIDR notation",
+											"pattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(\\d|[1-2]\\d|3[0-2]))$",
+											"required": false
+										}
+									}
+								}
+							}
+						}
+					},
+					"routing": {
+						"title": "Routing protocols",
+						"description": "routing protocols used within your community",
+						"required": false,
+						"type": "array",
+						"items": {
+							"type": "string",
+							"title": "option",
+							"enum": [
+								"802.11s",
+								"Babel",
+								"batman-adv",
+								"bmx6",
+								"cjdns",
+								"OLSR",
+								"OLSRv2"
+							]
+						}
+					},
+					"legals": {
+						"title": "Legal Issues",
+						"description": "What do you use to handle legal issues, e.g. the German Störerhaftung or restrictions in your country?",
+						"required": false,
+						"type": "array",
+						"items": {
+							"type": "string",
+							"title": "option",
+							"enum": [
+								"nothing",
+								"vpnnational",
+								"vpninternational",
+								"zappscript",
+								"p2pblock",
+								"splashpage",
+								"termsconditions",
+								"anonymizer",
+								"institutions"
+							]
+						}
+					},
+					"updatemode": {
+						"title": "Updatemode",
+						"type": "array",
+						"description": "how do you deploy firmware updates?",
+						"required": false,
+						"items": {
+							"type": "string",
+							"title": "option",
+							"enum": [
+								"none",
+								"manual",
+								"autoupdate"
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+}
