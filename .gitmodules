@@ -1,0 +1,6 @@
+[submodule "generator/jsonform"]
+	path = generator/jsonform
+	url = https://github.com/joshfire/jsonform
+[submodule "generator/php-simple-proxy"]
+	path = generator/php-simple-proxy
+	url = https://github.com/cowboy/php-simple-proxy
