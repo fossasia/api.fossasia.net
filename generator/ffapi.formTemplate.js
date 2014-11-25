@@ -40,10 +40,7 @@ ffapi.formTemplate =
 		// "expandable": true,
 		"items": [
 			"metacommunity",
-			"state.nodes", {
-				"key": "state.description",
-				"type": "textarea"
-			}, {
+			{
 				"type": "fieldset",
 				"title": "Advanced Contacts",
 				"expandable": true,
