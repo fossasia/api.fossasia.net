@@ -1,7 +1,7 @@
 {
 	"schema": {
 		"type": "object",
-		"description": "FOSSASIA Community API 0.4.4",
+		"description": "FOSSASIA Community API 1.0.0",
 		"required": false,
 		"properties": {
 			"api": {
