@@ -126,7 +126,7 @@
 						"title": "Mailinglist",
 						"type": "string",
 						"description": "The email address (user@domain.com) of your mailing list or a link to the mailinglist info page (http{s}://...)",
-						"pattern": "^([A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}|(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+)$",
+						"pattern": "^([A-Za-z0-9äöüÄÖUß_\\-\\.]+@[A-Za-z0-9äöüÄÖUß_\\-\\.]+\\.[A-Za-z]{2,}|(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+)$",
 						"required": false
 					},
 					"phone": {
@@ -153,7 +153,7 @@
 						"title": "Webform",
 						"type": "string",
 						"description": "URL to your community's contact form (http{s}://...)",
-						"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+						"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
 						"required": false
 					}
 				}
@@ -161,7 +161,7 @@
 			"url": {
 				"title": "Homepage",
 				"type": "string",
-				"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\-_\\./]+",
+				"pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
 				"description": "The main website (http{s}://...)",
 				"required": true
 			},
