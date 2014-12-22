@@ -2,7 +2,7 @@ var ffapi = {};
 ffapi.formTemplate = 
 [
 	"name",
-	"url", {
+	"url",{
 		"type": "fieldset",
 		"title": "Location",
 		"expanded": true,
@@ -40,6 +40,7 @@ ffapi.formTemplate =
 		// "expandable": true,
 		"items": [
 			"metacommunity",
+			"state.logo",
 			{
 				"type": "fieldset",
 				"title": "Advanced Contacts",
