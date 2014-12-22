@@ -1,15 +1,15 @@
 {
 	"schema": {
 		"type": "object",
-		"description": "FOSSASIA Community API x.x.x",
+		"description": "FOSSASIA Community API 1.0.1",
 		"required": false,
 		"properties": {
 			"api": {
 				"title": "API",
 				"type": "string",
 				"description": "The FOSSASIA Community API version you use",
-				"enum": ["1.0.0", "1.0.1", "x.x.x"],
-				"default": "x.x.x",
+				"enum": ["1.0.0", "1.0.1"],
+				"default": "1.0.1",
 				"required": true
 			},
 			"name": {
@@ -260,7 +260,7 @@
 						"title": "Logo",
 						"type": "string",
 						"description": "URL to the logo of your community, formats: jpg, png, size: square, 150x150, 300x300",
-				    "pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
+            "pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
 						"required": false
 					}
 				}
