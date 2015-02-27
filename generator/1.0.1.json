@@ -239,7 +239,7 @@
 				"properties": {
 					"lastchange": {
 						"title": "Last Change",
-						"type": "state",
+						"type": "string",
 						"description": "At what iso timestamp has your community status lastly changed? (ISO 8601 timestamp)",
 						"default": 0,
 						"required": true
@@ -260,7 +260,7 @@
 						"title": "Logo",
 						"type": "string",
 						"description": "URL to the logo of your community, formats: jpg, png, size: square, 150x150, 300x300",
-				    "pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
+            "pattern": "^(http|https)://[A-Za-z0-9ÄÖÜäöüß\\?=\\-_\\./]+",
 						"required": false
 					}
 				}

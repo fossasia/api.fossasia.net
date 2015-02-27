@@ -239,7 +239,7 @@
 				"properties": {
 					"lastchange": {
 						"title": "Last Change",
-						"type": "state",
+						"type": "string",
 						"description": "At what iso timestamp has your community status lastly changed? (ISO 8601 timestamp)",
 						"default": 0,
 						"required": true
