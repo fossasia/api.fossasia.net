@@ -145,7 +145,7 @@
 					"twitter": {
 						"title": "Twitter",
 						"type": "string",
-						"pattern": "^@[A-Za-z0-9]{1,15}",
+						"pattern": "^@[A-Za-z0-9_]{1,15}",
 						"description": "Your community's twitter name (starts with @)",
 						"required": false
 					},
