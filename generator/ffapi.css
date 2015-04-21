@@ -6,11 +6,6 @@
 	content: '\25BE';
 }
 
-#jsonArea {
-    position: fixed;
-    left: 827px;
-}
-
 .jsonform-required > label:after {
 	content: ' *';
 	color: red;
