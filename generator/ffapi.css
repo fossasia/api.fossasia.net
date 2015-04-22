@@ -5,6 +5,7 @@
 .expanded > legend:before {
 	content: '\25BE';
 }
+
 .jsonform-required > label:after {
 	content: ' *';
 	color: red;
