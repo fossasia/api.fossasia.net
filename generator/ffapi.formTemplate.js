@@ -11,7 +11,8 @@ ffapi.formTemplate =
 				"key": "location.country"
 			},
 			"location.lat",
-			"location.lon"
+			"location.lon",
+            "location.mappicker"
 		]
 	}, {
 		"type": "fieldset",
