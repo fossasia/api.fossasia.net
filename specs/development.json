@@ -80,11 +80,7 @@
 						"type": "number",
 						"description": "Longitude of your city in decimal degrees (e.g. 11.6789)",
 						"required": true
-					},
-                    "mappicker": {
-                        "type" : "number",
-                        "title" : "<div id=\"map\" class=\"span10\"></div>"
-                    }
+					}
 				}
 			},
 			"contact": {

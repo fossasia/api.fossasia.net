@@ -22,10 +22,7 @@
 	height: 20px;
 }
 
-#jsonform-0-elt-location\.mappicker {
-    display : none;
-}
-
 #map {
     height : 300px;
+    margin-left : 0;
 }

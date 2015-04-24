@@ -182,32 +182,6 @@ var handleSchema = function()
 			}
 		};
 
-    var setupMap = function() {
-        var map = L.map('map').setView([34.885, 86.484], 3);
-
-        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            id: 'examples.map-i875mjb7'
-        }).addTo(map);
-
-        var marker = L.marker([46.2830,86.6700]).addTo(map);
-        var latInput = $('#jsonform-0-elt-location\\.lat');
-        var lonInput = $('#jsonform-0-elt-location\\.lon');
-        function onMapClick(e) {
-            marker
-                .setLatLng(e.latlng)
-                .bindPopup("Your location :  " + e.latlng.toString())
-                .openPopup();
-            latInput.val(e.latlng.lat);
-            lonInput.val(e.latlng.lng);
-        }
-
-        map.on('click', onMapClick);
-    };
-
 	// finally return the "handleSchema"-function-body
 	return function ( schema ) {;
 		schema.form = ffapi.formTemplate;
@@ -221,7 +195,7 @@ var handleSchema = function()
 		currentSchema = schema;
 		addDatepickerToTimeline();
 
-        setupMap();
+        addMapPickerToLocation();
 	};
 }();
 
@@ -246,4 +220,49 @@ function addDatepickerToTimeline() {
 		}
 		i++;
 	}
+}
+
+function addMapPickerToLocation() {
+    $(("<div id=\"map\" class=\"span10\"></div>")).insertAfter('input[name="location.lon"]');
+
+    var map = L.map('map').setView([34.885, 86.484], 3);
+
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'examples.map-i875mjb7'
+    }).addTo(map);
+    var curLatLng = [46.2830,86.6700];
+    var marker = L.marker([46.2830,86.6700]).addTo(map);
+    var latInput = $('input[name="location.lat"]');
+    var lngInput = $('input[name="location.lon"]');
+    function onMapClick(e) {
+        latInput.val(e.latlng.lat);
+        lngInput.val(e.latlng.lng);
+        curLatLng = [e.latlng.lat, e.latlng.lng];
+        updateMarker();
+    }
+
+    map.on('click', onMapClick);
+
+    latInput.on('input', function() {
+        curLatLng[0] = latInput.val();
+        updateMarker();
+        return false;
+    });
+
+    lngInput.on('input', function() {
+        curLatLng[1] = lngInput.val();
+        updateMarker();
+        return false;
+    });
+
+    var updateMarker = function() {
+        marker
+            .setLatLng(curLatLng)
+            .bindPopup("Your location :  " + marker.getLatLng().toString())
+            .openPopup();
+    }
 }
