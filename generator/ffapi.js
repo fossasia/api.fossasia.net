@@ -1,4 +1,4 @@
-var apiVersion = "../specs/development";
+var apiVersion = "1.0.1";
 var defaultMapCenter = [22, 87];
 var handleSchema = function()
 {
