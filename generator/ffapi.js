@@ -62,8 +62,7 @@ $.getJSON("config.json", function(config) {
 				$( '#dirselect' ).append($('<option>').text('choose a community from list'));
 				var protocol = window.location.origin.split(':')[0] + ':';
 				var proxy = "php-simple-proxy/ba-simple-proxy.php?url=";
-				var directoryUrl = "//rawgit.com/fossasia/directory.api.fossasia.net/master/directory.json";
-				var url = proxy + protocol + directoryUrl;
+				var url = proxy + protocol + config.directoryUrl;
 				$.getJSON(url, function(dir) {
 					if (dir.contents) {
 						dir.contents = sortObject(dir.contents);
