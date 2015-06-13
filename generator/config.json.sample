@@ -1,5 +1,6 @@
 {
 	"apiVersion" : "1.0.1",
     "defaultMapCenter" : [22, 87],
-    "directoryUrl" : "//rawgit.com/fossasia/directory.api.fossasia.net/master/directory.json"
+    "directoryUrl" : "//rawgit.com/fossasia/directory.api.fossasia.net/master/directory.json",
+    "tileLayerId" : "freienetzwerke.i2lgkb76"
 }

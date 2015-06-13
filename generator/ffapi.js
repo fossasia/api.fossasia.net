@@ -231,13 +231,13 @@ $.getJSON("config.json", function(config) {
 	    $(("<div id=\"map\" class=\"span6\"></div>")).insertAfter(lngInput.parent(".controls"));
 
 	    var map = L.map('map');
-
+	    var tileLayerId = config.tileLayerId ? config.tileLayerId : 'examples.map-i875mjb7';
 	    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	        maxZoom: 18,
 	        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 	        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 	        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	        id: 'examples.map-i875mjb7',
+	        id: tileLayerId,
 	        noWrap : true
 	    }).addTo(map);
 
