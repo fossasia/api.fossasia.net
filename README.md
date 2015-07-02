@@ -16,7 +16,7 @@ The freifunk API is designed to collect metadata of communities in a decentral w
 
 ## Structure
 
-FOSSASIA API breaks down to several projects, each with its dedicated task : 
+FOSSASIA API breaks down to several projects, each with its dedicated task :
 
 * [api.fossasia.net](https://github.com/fossasia/api.fossasia.net)
 
@@ -38,30 +38,26 @@ FOSSASIA API breaks down to several projects, each with its dedicated task :
 
   interactive FOSSASIA community map.
 
-* [timeline.fossasia.api.net](https://github.com/fossasia/timeline.api.fossasia.net) 
+* [timeline.fossasia.api.net](https://github.com/fossasia/timeline.api.fossasia.net)
 
-  timeline of registered communities, packaged as a jQuery plugin.
+  events timeline of registered communities.
+
+## How it works
+
+The "back-end" of FOSSASIA API project is a set communities json files, each containing some general meta-information about a community : name, location, contact, blog/forum/calendar feeds.. Just enough to build interesting projects and statistics. API files must follow a well-defined format, and to make things easier, there's a web-based file generator to help creating / modifying them. Format specification and API file generator are situated at the current [api](https://github.com/fossasia/api.fossasia.net) repo.
+
+From the list of [individual communities files urls](https://github.com/fossasia/directory.api.fossasia.net/blob/master/directory.json), we retrieve API json files and cache them in aggregated files : `ffSummarizedDir.json`, `ffGeoJson.json`, `ffMerged.ics`,using the common aggregator & ics merger in [common](https://github.com/fossasia/common.api.fossasia.net) repo. Other API projects & external services can retrieve API "back-end" data from these files. These aggregator are set up as cron tasks to periodically retrieve fresh data.
+
+The API is designed to make communities metadata available to everyone. There are several public webservice endpoints that users can access : Calendar API in [common](https://github.com/fossasia/common.api.fossasia.net) repo, merged feed rss in [feed](https://github.com/fossasia/feed.api.fossasia.net) repo. These services require the aggregated json file `ffGeoJson.json`.
+
+Finally, there are several visual components : the common map situated at [cmap](https://github.com/fossasia/cmap.api.fossasia.net) repo, that could be embed as iframe in any website. The map also requires `ffGeoJson.json`. And the community timeline in [timeline](https://github.com/fossasia/timeline.api.fossasia.net) repo, which gets its data from Calendar API, and is bundled as a jQuery plugin
+
 
 ## Setup
 
-The API projects are designed to be independant components. Please clone any repo as per your needs and refer to its README file for more information.
+The API projects are designed to be independant components. Only harmless urls hold them together, which can, in most of the case, be modified in project's configuration file. Please clone any repo as per your needs and refer to its README file for more information.
 
-To set up the api file generator, you can follow these simple steps :
-
-* Clone api.fossasia.net :
-
-  ```sh
-  git clone https://github.com/fossasia/api.fossasia.net
-  ```
-
-* Create `config.json` from sample file `config.json.sample` :
-
-  ```sh
-  cd api.fossasia.net
-  cp generator/config.json.sample generator/config.json
-  ```
-
-* Put the whole repo (or make a symlink) under your php web server. The generator is then accessible at `yourserver.com/api.fossasia.net/generator`
+For detailed setup instructions of the api file generator, visit [here](https://github.com/fossasia/api.fossasia.net/blob/master/generator/README.md)
 
 ## Contribute
 
