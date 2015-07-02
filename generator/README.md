@@ -13,5 +13,10 @@ For the complete JSON schema, visit [here](https://github.com/fossasia/api.fossa
 ## How to install
 To create an instance of the generator, follow these simple steps : 
 * clone the repo `git clone https://github.com/fossasia/api.fossasia.net.git`
-* create the configuration file, name it `config.json` and put it in the current folder. A sample configuration file is available for you to make a copy.
-* Visit the generator at `localhost/[..]/api.fossasia.net/generator`
+* Create `config.json` from sample file `config.json.sample` :
+
+  ```sh
+  cd api.fossasia.net
+  cp generator/config.json.sample generator/config.json
+  ```
+* Put the whole repo (or make a symlink) under your php web server. The generator is then accessible at `yourserver.com/api.fossasia.net/generator`
