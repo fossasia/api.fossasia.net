@@ -55,7 +55,7 @@ Finally, there are several visual components : the common map situated at [cmap]
 
 ## Setup
 
-The API projects are designed to be independant components. Only harmless urls hold them together, which can, in most of the case, be modified in project's configuration file. Please clone any repo as per your needs and refer to its README file for more information.
+The API projects are designed to be independent components. Only harmless urls hold them together, which can, in most of the case, be modified in project's configuration file. Please clone any repo as per your needs and refer to its README file for more information.
 
 For detailed setup instructions of the api file generator, visit [here](https://github.com/fossasia/api.fossasia.net/blob/master/generator/README.md)
 
